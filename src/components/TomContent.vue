@@ -9,6 +9,8 @@
       </option>
     </select>
 
+    <cell-automata/>
+
     <div class="logo-container" :key="logo" v-for="logo in logos">
       <button>
         <img
@@ -24,9 +26,13 @@
 <script>
 import * as Tone from "tone";
 import A1 from "../assets/BOOST.wav";
+import CellAutomata from './CellAutomata.vue';
 
 export default {
   name: 'HelloWorld',
+  components: {
+    CellAutomata,
+  },
   data: function() {
     return {
       // eslint-disable-next-line  no-unused-labels

@@ -1,28 +1,75 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TomContent title="TOMCONTENT"/>
+    <div class="footer">
+      <div class="footer-content">
+        <a href="https://twitter.com/tomwieck">
+          Twitter
+        </a>
+        /
+        <a href="https://www.discogs.com/user/tomwieck/collection">
+          Discogs
+        </a>
+        /
+        <a href="https://twieck.netlify.app/blog/">
+          Blog
+        </a>
+        /
+        <a href="mailto:tnwieck@gmail.com?subject=TomContent">
+          E-mail
+        </a>
+        /
+        <a href="https://www.linkedin.com/in/tom-wieck-aa5801118/">
+          LinkedIn
+        </a>
+        /
+        SoundCloud(
+        <a href="https://soundcloud.com/twieck">
+          Tomo
+        </a>
+        /
+        <a href="https://soundcloud.com/tommy-garcon">
+          Tommy Garcon
+        </a>
+        )
+      </div>
+      <img class="logo" alt="tomcontent.com" src="./assets/logo.png">
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TomContent from './components/TomContent.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TomContent
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body {
+  background-color: black;
+
+}
+.footer {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.footer-conter {
+  width: 100%;
+}
+.logo {
+  padding: 40px;
+  width: 50%;
 }
 </style>

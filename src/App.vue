@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TomContent title="TOMCONTENT"/>
+    <router-view></router-view>
     <div class="footer">
       <div class="footer-content">
         <a href="https://twitter.com/tomwieck">
@@ -39,12 +39,10 @@
 </template>
 
 <script>
-import TomContent from './components/TomContent.vue'
 
 export default {
   name: 'App',
   components: {
-    TomContent
   }
 }
 </script>

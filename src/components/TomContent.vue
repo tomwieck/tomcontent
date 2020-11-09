@@ -104,8 +104,6 @@ export default {
     },
     toneSynth(note) {
       //  multiple synths
-      console.log(note);
-      console.log(this.synth);
       const now = Tone.now()
       // trigger the attack immediately
       this.synth.triggerAttack(note, this.attack)

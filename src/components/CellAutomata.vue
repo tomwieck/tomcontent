@@ -10,24 +10,36 @@ export default {
   data: function() {
     return {
       octaves: 10,
-
+      colors: [],
     }
   },
   created() {
+      for (let i = 0; i < 3; i++) {
+        // create 3 random numbers
+        this.colors.push([this.randomNumber(), this.randomNumber(), this.randomNumber()])
+      }
       this.createCells()
   },
   methods: {
-      createCellsTest() {
-
+      randomNumber(){
+        var randomNumber = Math.floor(Math.random() * 255) + 1;
+        return randomNumber;
       },
       createCells() {
         var bbTerrarium = new window.terra.Terrarium(100, 100);
 
+        var energy = Array.from({length: 3}, () => Math.floor(Math.random() * 3));
+
+
+        // or three nested arrays of numbers ie
+        // [[123, 123, 123], [456...]...]
+
+
         window.terra.registerCreature({
         type: 'plant',
-        color: [0, 0, 120],
         size: 10,
-        initialEnergy: 5,
+        color: this.colors[0],
+        initialEnergy: energy[0],
         maxEnergy: 20,
         wait: function() {
             // photosynthesis :)
@@ -39,18 +51,18 @@ export default {
 
         window.terra.registerCreature({
         type: 'brute',
-        color: [0, 0, 255],
+        color: this.colors[1],
         maxEnergy: 50,
-        initialEnergy: 10,
+        initialEnergy: energy[1],
         size: 20
         });
 
         window.terra.registerCreature({
         type: 'bully',
-        color: [0, 0, 15],
-        initialEnergy: 20,
+        color: this.colors[2],
+        initialEnergy: energy[2],
         reproduceLv: 0.6,
-        sustainability: 3
+        sustainability: 1
         });
 
         bbTerrarium.grid = bbTerrarium.makeGridWithDistribution([['plant', 50], ['brute', 5], ['bully', 5]]);

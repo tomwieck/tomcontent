@@ -14,16 +14,21 @@ export default {
     }
   },
   created() {
+
+
+      console.log(Math.floor(Math.random() * 255));
       for (let i = 0; i < 3; i++) {
         // create 3 random numbers
-        this.colors.push([this.randomNumber(), this.randomNumber(), this.randomNumber()])
+        this.$nextTick(() => {
+          this.colors.push(Array.from({length: 3}, () => Math.floor(Math.random() * 255)));
+        });
       }
+      console.log(this.colors);
       this.createCells()
   },
   methods: {
-      randomNumber(){
-        var randomNumber = Math.floor(Math.random() * 255) + 1;
-        return randomNumber;
+      createCellsTest() {
+
       },
       createCells() {
         var bbTerrarium = new window.terra.Terrarium(100, 100);

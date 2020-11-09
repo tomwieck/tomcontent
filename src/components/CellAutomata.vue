@@ -10,7 +10,6 @@ export default {
   name: 'CellAutomata',
   data: function() {
     return {
-      octaves: 10,
       colors: [],
     }
   },

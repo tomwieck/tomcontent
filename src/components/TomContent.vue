@@ -11,19 +11,21 @@
 
     <cell-automata/>
 
-    <div class="logo-container" :key="logo" v-for="logo in logos">
-      <button>
+    <div class="logo-container" :key="index" v-for="(logo, index) in logos">
+      <button
+        @click="playNote(index)">
         <img
           class="image"
           :src="require(`@/assets/tc-${logo}.png`)"
-          :alt="'Tom Content Logo ' + logo"
-          @click="randomSynth()">
+          :alt="'Tom Content Logo ' + logo">
       </button>
     </div>
+
   </div>
 </template>
 
 <script>
+
 import * as Tone from "tone";
 import A1 from "../assets/BOOST.wav";
 import CellAutomata from './CellAutomata.vue';
@@ -42,18 +44,16 @@ export default {
       isLoaded: false,
       notesArray: [],
       selected: 'AMSynth',
+      instrumentIndex: 0,
       instruments: [
         'AMSynth',
         'DuoSynth',
         'FMSynth',
-        'MembraneSynth',
-        'MetalSynth',
         'MonoSynth',
-        'NoiseSynth',
-        'PluckSynth',
-        'PolySynth',
       ],
+      keys: 'awsedftgyhujkol',
       logos: 16,
+      currentTranspose: 12,
     }
   },
   props: {
@@ -75,12 +75,15 @@ export default {
     },
     synth: function() {
       // Tone.x.
+      console.log(this.selected)
       let tempSynth = new Tone[this.selected];
       return tempSynth.toDestination();
 
     }
   },
   created() {
+  document.addEventListener('keyup', this.listener);
+
     this.sampler = new Tone.Sampler(
       { A1 },
       {
@@ -91,16 +94,51 @@ export default {
     ).toMaster();
   },
   methods: {
+    listener(e) {
+
+      console.log(e.key);
+
+      if (e.key === 'ArrowUp' ) {
+        if (this.instrumentIndex !== this.instruments.length - 1) {
+          this.instrumentIndex++;
+        }
+        this.selected = this.instruments[this.instrumentIndex];
+      }
+
+      if (e.key === 'ArrowDown' ) {
+        if (this.instrumentIndex !== 0) {
+          this.instrumentIndex--;
+        }
+        this.selected = this.instruments[this.instrumentIndex];
+      }
+
+      if (e.key === 'z' && this.currentTranspose > 0) {
+        this.currentTranspose = this.currentTranspose - 12;
+      }
+
+      if (e.key === 'x') {
+        this.currentTranspose = this.currentTranspose + 12;
+      }
+      //z x
+      // play note number that matches index in array +1
+      // awsedftgyhujkol
+      var n = this.keys.search(e.key);
+      if (n === -1) {
+        n = 1;
+      }
+      this.toneSynth(n + this.currentTranspose)
+    },
     getImgUrl(number) {
       return require('../assets/tc-' + number)
     },
-    randomSynth() {
+    playNote(i) {
+      console.log(i);
       // random from flattenedNoteArray
       //  pass to toneSynth
 
-      let number = Math.floor((Math.random() * this.flatNotesArray.length) + 1);
+      // let number = Math.floor((Math.random() * this.flatNotesArray.length) + 1);
 
-      this.toneSynth(this.flatNotesArray[number])
+      this.toneSynth(i + this.currentTranspose)
     },
     toneSynth(note) {
       //  multiple synths

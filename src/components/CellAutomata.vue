@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import random from 'random'
 
 export default {
   name: 'CellAutomata',
@@ -14,63 +15,56 @@ export default {
     }
   },
   created() {
-
-
-      console.log(Math.floor(Math.random() * 255));
       for (let i = 0; i < 3; i++) {
-        // create 3 random numbers
-        this.$nextTick(() => {
-          this.colors.push(Array.from({length: 3}, () => Math.floor(Math.random() * 255)));
-        });
+        this.colors.push(Array.from({length: 3}, () => random.int(0,255)));
       }
-      console.log(this.colors);
       this.createCells()
+
+      console.log(this.colors[0], this.colors[1]);
   },
   methods: {
-      createCellsTest() {
-
-      },
       createCells() {
-        var bbTerrarium = new window.terra.Terrarium(100, 100);
+        var bbTerrarium = new window.terra.Terrarium(100,100);
 
-        var energy = Array.from({length: 3}, () => Math.floor(Math.random() * 3));
+        let energy = Array.from({length: 3}, () => random.int(1, 30))
 
-
-        // or three nested arrays of numbers ie
-        // [[123, 123, 123], [456...]...]
-
-
+        console.log(this.colors[0], this.colors[1]);
         window.terra.registerCreature({
-        type: 'plant',
-        size: 10,
-        color: this.colors[0],
-        initialEnergy: energy[0],
-        maxEnergy: 20,
-        wait: function() {
-            // photosynthesis :)
-            this.energy += 1;
-        },
-        move: false,
-        reproduceLv: 0.65
+          type: 'plant',
+          color: [0, random.int(0,100), random.int(0,255)],
+          size: 10,
+          initialEnergy: energy[0],
+          wait: function() {
+              // photosynthesis :)
+              this.energy += 1;
+          },
+          move: false,
+          reproduceLv: 0.65
         });
 
         window.terra.registerCreature({
-        type: 'brute',
-        color: this.colors[1],
-        maxEnergy: 50,
-        initialEnergy: energy[1],
-        size: 20
+          type: 'brute',
+          color: [random.int(0,500), random.int(0,100), random.int(0,255)],
+          maxEnergy: 500,
+          initialEnergy: 100,
+          size: 20,
+          wait: function() {
+              // photosynthesis :)
+              this.energy += 1;
+          },
         });
+        console.log(this.colors[0], this.colors[1]);
 
         window.terra.registerCreature({
-        type: 'bully',
-        color: this.colors[2],
-        initialEnergy: energy[2],
-        reproduceLv: 0.6,
-        sustainability: 1
+          type: 'bully',
+          color: [random.int(0,50), 0, random.int(0,255)],
+          initialEnergy: energy[2],
+          sustainability: 30
         });
+        console.log(this.colors[2]);
 
-        bbTerrarium.grid = bbTerrarium.makeGridWithDistribution([['plant', 50], ['brute', 5], ['bully', 5]]);
+
+        bbTerrarium.grid = bbTerrarium.makeGridWithDistribution([['plant', 50], ['brute', 5], ['bully', 10]]);
         bbTerrarium.animate();
         }
   }

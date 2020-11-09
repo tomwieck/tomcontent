@@ -33,7 +33,6 @@
         </a>
         )
       </div>
-      <img class="logo" alt="tomcontent.com" src="./assets/logo.png">
     </div>
   </div>
 </template>
@@ -57,6 +56,8 @@ body {
 
 }
 .footer {
+  background-color: black;
+  padding: 20px;
   color: white;
   position: absolute;
   bottom: 0;

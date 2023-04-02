@@ -23,15 +23,9 @@
           LinkedIn
         </a>
         /
-        SoundCloud(
         <a href="https://soundcloud.com/twieck">
-          Tomo
+          SoundCloud
         </a>
-        /
-        <a href="https://soundcloud.com/tommy-garcon">
-          Tommy Garcon
-        </a>
-        )
       </div>
     </div>
   </div>

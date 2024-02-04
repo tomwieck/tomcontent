@@ -7,24 +7,24 @@
           Twitter
         </a>
         /
-        <a href="https://www.discogs.com/user/tomwieck/collection">
+        <a href="https://www.discogs.com/seller/tomwieck/profile">
           Discogs
         </a>
         /
-        <a href="https://twieck.netlify.app/blog/">
-          Blog
+        <a href="hhttps://plaintextreview.netlify.app/">
+          Reviews
         </a>
         /
-        <a href="mailto:tnwieck@gmail.com?subject=TomContent">
+        <a href="mailto:tnwieck@gmail.com?subject=TomTier">
           E-mail
-        </a>
-        /
-        <a href="https://www.linkedin.com/in/tom-wieck-aa5801118/">
-          LinkedIn
         </a>
         /
         <a href="https://soundcloud.com/twieck">
           SoundCloud
+        </a>
+        /
+        <a href="https://stream.tomtier.co.uk/">
+          Stream
         </a>
       </div>
     </div>

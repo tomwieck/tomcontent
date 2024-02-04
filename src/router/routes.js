@@ -1,8 +1,10 @@
-import TomContent from '../components/TomContent.vue';
+// import TomContent from '../components/TomContent.vue';
+import TomTier from '../components/TomTier.vue';
 
 export default [
   {
     path: '/',
-    component: TomContent
+    component: TomTier
+    // component: TomContent
   },
 ];

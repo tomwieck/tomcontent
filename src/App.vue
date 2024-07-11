@@ -11,7 +11,7 @@
           Discogs
         </a>
         /
-        <a href="hhttps://plaintextreview.netlify.app/">
+        <a href="https://plaintextreview.netlify.app/">
           Reviews
         </a>
         /
